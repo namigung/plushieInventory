@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Plushie Inventory</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header> <h1>Plushie Inventory</h1> </header>
+        <!-- views the inventory  -->
+        <form action = "viewinventory" method = "Post">
+            <button> view inventory </button>
+        </form>
+        <!-- This is to select the plushie to add or remove  -->
+        <form action = "addAndRemove" method = "Get">
+            <h2> Selecting Plushie</h2>
+            <table>
+                <tr>
+                    <td><label>Select One: </label><br>
+                        <input type = "radio" id ="added" value ="added" name="addOrRemove" required> 
+                        <label for = "under 13" >Add Plushie</label><br>
+                        <input type = "radio" id ="removed" value ="removed" name="addOrRemove" required> 
+                        <label for = "remove" >Remove Plushie</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Plushie Name</td>
+                    <td><input type ="text" name = "PlushieName" required></td>
+                </tr>
+                <tr>
+                    <td>Number of Plushies</td>
+                    <td><input type ="text" name = "PlushieCount" required></td>
+                </tr>
+                <tr> 
+                    <td>
+                <button type = "submit">Update Inventory</button>
+                    </td>
+                </tr>
+            </table>
+        </form>       
+    </body>
+</html>
