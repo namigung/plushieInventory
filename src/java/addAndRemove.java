@@ -100,7 +100,8 @@ public class addAndRemove extends viewinventory {
             }
             //loads into file 
             updateFile(plushies, res);
-            String completedMessage = "<html><p>" + plushieCount + " " +  plushieName + "was successfully " + action + "</p></html>";
+            String completedMessage = "<html><p>" + plushieCount + " " +  plushieName + " `"
+                    + "was successfully " + action + "</p></html>";
             String goBackRes = "<html><a href ='index.html'><button>Home Page</button></a></html>";
             writer.println(completedMessage);
             writer.println(goBackRes);
