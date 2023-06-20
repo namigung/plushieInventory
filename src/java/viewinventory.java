@@ -79,6 +79,7 @@ public class viewinventory extends HttpServlet{
         return imageName; 
     }
     
+    
     //processes the plushie name and count ot retrieve (this is for hover effect)
     int fileIterator = 1;
     //the name of the plushie is at first empty
@@ -102,11 +103,45 @@ public class viewinventory extends HttpServlet{
        return plushieNameAndInv;
     }
     
+    //ADD FUNCTION THAT RETURNS TOP 3 PLUSHIES WITH MOST AMOUNT IN AN ARRAY
+    
+    
+    
+    
+    
+    
+    
+    //Method prints out a row
+    public String printRow() throws IOException{
+        return "<html>"
+                + "<div class = 'row'>"
+                +   "<div class = 'column'>"
+                +        "<div class = 'image-overlay'> </div>"
+                +           "<div class = 'image-title'>" + getPlushieNameAndInv() + "</div>"
+                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" +  "style='width: 100%'>"
+                +   "</div> "
+                +  "<div class = 'column'>"
+                +      "<div class = 'image=overlay'></div>"
+                +            "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
+                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  " style = 'width: 100%'>"
+                +   "</div>"
+                +  "<div class = 'column'>"
+                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
+                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
+                +  "</div>"
+                + "</div>"
+                + "</html>";
+    }
+    
     //frontend Code
+    int rows = 0;
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         //GOAL: Display pictures of plushies in rows 
-      
+        String lastRow = "<div class = 'column'>"
+                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
+                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
+                +  "</div>";
        // get response writer
         PrintWriter writer = res.getWriter();
         writer.println("<!DOCTYPE html>");
@@ -139,138 +174,23 @@ public class viewinventory extends HttpServlet{
         String htmlRespone = "<html><a href ='index.html'><button>go back</button></a></html>";
         writer.println(htmlRespone);
         
- 
         //returns pictures of plushies
-        writer.println("<html>"
-                + "<div class = 'row'>"
-                +   "<div class = 'column'>"
-                +        "<div class = 'image-overlay'> </div>"
-                +           "<div class = 'image-title'>" + getPlushieNameAndInv() + "</div>"
-                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" +  "style='width: 100%'>"
-                +   "</div> "
-                +  "<div class = 'column'>"
-                +      "<div class = 'image=overlay'></div>"
-                +            "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  " style = 'width: 100%'>"
-                +   "</div>"
-                +  "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
-                +  "</div>"
-                + "</div>"
-                + "<div class = 'row'>"
-                +   "<div class = 'column'>"
-                +        "<div class = 'image-overlay'> </div>"
-                +           "<div class = 'image-title'>" + getPlushieNameAndInv() + "</div>"
-                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" +  "style='width: 100%'>"
-                +   "</div> "
-                +  "<div class = 'column'>"
-                +      "<div class = 'image=overlay'></div>"
-                +            "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  " style = 'width: 100%'>"
-                +   "</div>"
-                +  "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
-                +  "</div>"
-                + "</div>"
-                + "<div class = 'row'>"
-                +   "<div class = 'column'>"
-                +        "<div class = 'image-overlay'> </div>"
-                +           "<div class = 'image-title'>" + getPlushieNameAndInv() + "</div>"
-                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" +  "style='width: 100%'>"
-                +   "</div> "
-                +  "<div class = 'column'>"
-                +      "<div class = 'image=overlay'></div>"
-                +            "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  " style = 'width: 100%'>"
-                +   "</div>"
-                +  "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
-                +  "</div>"
-                + "</div>"
-                + "<div class = 'row'>"
-                +   "<div class = 'column'>"
-                +        "<div class = 'image-overlay'> </div>"
-                +           "<div class = 'image-title'>" + getPlushieNameAndInv() + "</div>"
-                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" +  "style='width: 100%'>"
-                +   "</div> "
-                +  "<div class = 'column'>"
-                +      "<div class = 'image=overlay'></div>"
-                +            "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  " style = 'width: 100%'>"
-                +   "</div>"
-                +  "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
-                +  "</div>"
-                + "</div>"
-                +"<div class = 'row'>"
-                +   "<div class = 'column'>"
-                +        "<div class = 'image-overlay'> </div>"
-                +           "<div class = 'image-title'>" + getPlushieNameAndInv() + "</div>"
-                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" +  "style='width: 100%'>"
-                +   "</div> "
-                +  "<div class = 'column'>"
-                +      "<div class = 'image=overlay'></div>"
-                +            "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  " style = 'width: 100%'>"
-                +   "</div>"
-                +  "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
-                +  "</div>"
-                + "</div>"
-                + "<div class = 'row'>"
-                +   "<div class = 'column'>"
-                +        "<div class = 'image-overlay'> </div>"
-                +           "<div class = 'image-title'>" + getPlushieNameAndInv() + "</div>"
-                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" +  "style='width: 100%'>"
-                +   "</div> "
-                +  "<div class = 'column'>"
-                +      "<div class = 'image=overlay'></div>"
-                +            "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  " style = 'width: 100%'>"
-                +   "</div>"
-                +  "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
-                +  "</div>"
-                + "</div>"
-                + "<div class = 'row'>"
-                +   "<div class = 'column'>"
-                +        "<div class = 'image-overlay'> </div>"
-                +           "<div class = 'image-title'>" + getPlushieNameAndInv() + "</div>"
-                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" +  "style='width: 100%'>"
-                +   "</div> "
-                +  "<div class = 'column'>"
-                +      "<div class = 'image=overlay'></div>"
-                +            "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  " style = 'width: 100%'>"
-                +   "</div>"
-                +  "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
-                +  "</div>"
-                + "</div>"
-                + "<div class = 'row'>"
-                +   "<div class = 'column'>"
-                +        "<div class = 'image-overlay'> </div>"
-                +           "<div class = 'image-title'>" + getPlushieNameAndInv() + "</div>"
-                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" +  "style='width: 100%'>"
-                +   "</div> "
-                +  "<div class = 'column'>"
-                +      "<div class = 'image=overlay'></div>"
-                +            "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  " style = 'width: 100%'>"
-                +   "</div>"
-                +  "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
-                +  "</div>"
-                + "</div>"
-                + "</html>");
+        int tempTotalTypePlushies = totalTypePlushies + 3;
+        int row = totalTypePlushies/3;
+        for (int i = 0; i <  row ; i++){
+            tempTotalTypePlushies -= 3;
+            writer.println(tempTotalTypePlushies);
+            writer.println(printRow());
+            if (i == 14){
+               writer.println(
+             "<html>"
+             + "<div class = 'row'>"
+             + lastRow.repeat(tempTotalTypePlushies)
+             + "</div></html>"); 
+           
+            }
+            
+        }
         
         /*
         //print out plushies into a list
