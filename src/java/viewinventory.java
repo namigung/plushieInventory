@@ -11,7 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 /*
  *
  * @author naomigong
@@ -22,7 +23,7 @@ public class viewinventory extends HttpServlet{
     
     //file instance
     final File inventory = new File ("/Users/naomigong/NetBeansProjects/plushieInventory/src/java/inventory.txt");
-    HashMap<String, String> plushies = new HashMap<String,String>();
+    Map<String, String> plushies = new LinkedHashMap<String,String>();
     
     //counts the total line numbers in the file 
     public int countLineNum(File inventory) throws IOException{
@@ -81,6 +82,7 @@ public class viewinventory extends HttpServlet{
     
     
     //processes the plushie name and count ot retrieve (this is for hover effect)
+    //this variable puts it in the correct section (only reading every other 2 starting at 1)
     int fileIterator = 1;
     //the name of the plushie is at first empty
     String plushieNameAndInv = "";
@@ -103,10 +105,15 @@ public class viewinventory extends HttpServlet{
        return plushieNameAndInv;
     }
     
-    //ADD FUNCTION THAT RETURNS TOP 3 PLUSHIES WITH MOST AMOUNT IN AN ARRAY
+    /*//ADD FUNCTION THAT RETURNS TOP 3 PLUSHIES WITH MOST AMOUNT IN AN ARRAY
+    public String[] top3plushies(){
+        String topPlushie
+        for (String i: plushies.keySet()){
+            
+        }
+    }
     
-    
-    
+    */
     
     
     
@@ -133,15 +140,20 @@ public class viewinventory extends HttpServlet{
                 + "</html>";
     }
     
+    public String lastRowString() throws IOException{
+    String lastRow = "<div class = 'column'>"
+                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
+                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
+                +  "</div>";
+    
+    return lastRow;
+    
+    }
+    
     //frontend Code
     int rows = 0;
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        //GOAL: Display pictures of plushies in rows 
-        String lastRow = "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
-                +  "</div>";
        // get response writer
         PrintWriter writer = res.getWriter();
         writer.println("<!DOCTYPE html>");
@@ -151,8 +163,6 @@ public class viewinventory extends HttpServlet{
        //loads inventory into hashmap
         loadInventory(inventory);
         int totalNumPlushies = totalPlushies(inventory);
-        
-        
        
         //css styling
         writer.println("<style>");
@@ -175,13 +185,15 @@ public class viewinventory extends HttpServlet{
         writer.println(htmlRespone);
         
         //returns pictures of plushies
-        int tempTotalTypePlushies = totalTypePlushies + 3;
+        int tempTotalTypePlushies = totalTypePlushies;
         int row = totalTypePlushies/3;
-        for (int i = 0; i <  row ; i++){
+        for (int i = 1; i <=  row ; i++){
+            //this tells you how many type of plushies will be in the last row
             tempTotalTypePlushies -= 3;
-            writer.println(tempTotalTypePlushies);
             writer.println(printRow());
-            if (i == 14){
+            //for last row
+            if (i == row){
+            String lastRow = lastRowString();
                writer.println(
              "<html>"
              + "<div class = 'row'>"

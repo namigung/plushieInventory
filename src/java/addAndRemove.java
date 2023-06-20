@@ -6,7 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.*;
 
@@ -22,7 +22,7 @@ import java.util.*;
 public class addAndRemove extends viewinventory {
     
     //This method updates the file after each add or removed plushie(s)
-     public void updateFile(HashMap plushies, HttpServletResponse res) throws IOException{
+     public void updateFile(Map plushies, HttpServletResponse res) throws IOException{
         BufferedWriter bf = null;
         PrintWriter writer = res.getWriter();
         try{
