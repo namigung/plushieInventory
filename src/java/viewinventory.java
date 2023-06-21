@@ -25,6 +25,7 @@ public class viewinventory extends HttpServlet{
     final File inventory = new File ("/Users/naomigong/NetBeansProjects/plushieInventory/src/java/inventory.txt");
     Map<String, String> plushies = new LinkedHashMap<String,String>();
     
+    
     //counts the total line numbers in the file 
     public int countLineNum(File inventory) throws IOException{
         int lines = 0;
@@ -92,7 +93,9 @@ public class viewinventory extends HttpServlet{
        BufferedReader reader = new BufferedReader(new FileReader(inventory));
        for (int i = 1; i < countLineNum(inventory); i++){
            if (i == fileIterator){
+               //reads the name of plushies
                plushieNameAndInv += reader.readLine() + ": ";
+               //reads the amount of that plushie in inventory
                plushieNameAndInv += reader.readLine();   
            }
            else{
@@ -105,17 +108,38 @@ public class viewinventory extends HttpServlet{
        return plushieNameAndInv;
     }
     
-    /*//ADD FUNCTION THAT RETURNS TOP 3 PLUSHIES WITH MOST AMOUNT IN AN ARRAY
-    public String[] top3plushies(){
-        String topPlushie
-        for (String i: plushies.keySet()){
-            
+    //ADD FUNCTION THAT RETURNS TOP 3 PLUSHIES WITH MOST AMOUNT IN AN ARRAY
+    public String[][] top3Plushies(){
+        String[][] top3 = new String[3][2];
+        //begin by setting the first and second max to really high numbers -- not possible number of plushies
+        int firstMax = 100000;
+        int secondMax = 10000;
+        int tempMax = 0;
+        String tempMaxPlush = "";
+        for (int row = 0; row < top3.length; row++){
+            for (int col =0; col < top3[0].length; col++){
+                for (String i: plushies.keySet()){
+                    int inv = Integer.parseInt(plushies.get(i));
+                    //the inventory must be bigger than tempp max but less tthan the firstMax or Second to find all top 3
+                    if (inv > tempMax && inv < firstMax && inv  < secondMax ){
+                       tempMax = inv; 
+                       tempMaxPlush = i;
+                    }
+                 } 
+            }
+            top3[row][0] = tempMaxPlush;
+            top3[row][1] = Integer.toString(tempMax);
+            if (row == 0){
+                firstMax = tempMax;
+            }
+            if (row == 1){
+                secondMax = tempMax;
+            }
+            //resets to find the next biggest
+            tempMax = 0;
         }
+        return top3;
     }
-    
-    */
-    
-    
     
     
     //Method prints out a row
@@ -140,6 +164,7 @@ public class viewinventory extends HttpServlet{
                 + "</html>";
     }
     
+    //prints the last row
     public String lastRowString() throws IOException{
     String lastRow = "<div class = 'column'>"
                 +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
@@ -177,12 +202,23 @@ public class viewinventory extends HttpServlet{
         writer.println("<html><h2>All Plushies</h2></html>");
         //returns plushie properties
         writer.println("<html><p>"+ "The total number of plushies is " + totalNumPlushies+ "</p></html>");
-        //returns the total types of plushies
+        //prints the total types of plushies
         int totalTypePlushies = countLineNum(inventory)/2;
-        writer.println("<html><p>"+ "The total number of types of  plushies is " + totalTypePlushies+ "</p><hr></html>");
+        writer.println("<html><p>"+ "The total number of types of  plushies is " + totalTypePlushies+ "</p></html>");
+        //prints top 3 plushies
+        writer.println("<html><p>The plushies with the most amount in the inventory are: </p></html>");
+        String[][] top3plushies = top3Plushies();
+        for (int i = 0; i < top3plushies.length; i++){
+            for (int j = 0; j < top3plushies[0].length; j++){
+                writer.println("<html>" + top3plushies[i][j] +"</html>" );
+            }
+            writer.println();
+        }
+        writer.println("<html><p><hr></p></html>");
         //creates button
         String htmlRespone = "<html><a href ='index.html'><button>go back</button></a></html>";
         writer.println(htmlRespone);
+       
         
         //returns pictures of plushies
         int tempTotalTypePlushies = totalTypePlushies;
@@ -203,15 +239,7 @@ public class viewinventory extends HttpServlet{
             }
             
         }
-        
-        /*
-        //print out plushies into a list
-        for (String i : plushies.keySet()) {
-        writer.println("<html><p>" + i + " " +  plushies.get(i)+ "<p></html>");
-        }
-        */
-      
-        
+       
         //resets the iterator for when you run application again
         fileIterator = 1; 
    
