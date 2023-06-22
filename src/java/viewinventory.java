@@ -147,18 +147,28 @@ public class viewinventory extends HttpServlet{
         return "<html>"
                 + "<div class = 'row'>"
                 +   "<div class = 'column'>"
-                +        "<div class = 'image-overlay'> </div>"
+                +       "<div class = container>"
+                +        "<div class = 'image-overlay'>"
                 +           "<div class = 'image-title'>" + getPlushieNameAndInv() + "</div>"
-                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" +  "style='width: 100%'>"
+                +           "</div>"
+                +           "<img src = " + "\'" + getImage(plushieNameAndInv) + "\'" + "class = 'image'" + "style='width: 100%'>"
+                +      "</div>"
                 +   "</div> "
                 +  "<div class = 'column'>"
-                +      "<div class = 'image=overlay'></div>"
+                +      "<div class = container>"
+                +      "<div class = 'image-overlay'>"
                 +            "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  " style = 'width: 100%'>"
+                +           "</div>"
+                +           "<img src =" + "\'" + getImage(plushieNameAndInv) + "\'" +  "class = 'image'" +  "style = 'width: 100%'>"
+                +      "</div>"
                 +   "</div>"
                 +  "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
+                +       "<div class = container>"
+                +       "<div class = 'image-overlay'>"
+                +        "<div class = 'image-title'><center>" + getPlushieNameAndInv()+ "</center></div>"
+                +          "</div>"
+                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + "class = 'image'" + " style = 'width: 100'>"
+                +   "</div>"
                 +  "</div>"
                 + "</div>"
                 + "</html>";
@@ -167,8 +177,12 @@ public class viewinventory extends HttpServlet{
     //prints the last row
     public String lastRowString() throws IOException{
     String lastRow = "<div class = 'column'>"
-                +        "<div class = 'image-title'>" + getPlushieNameAndInv()+ "</div>"
-                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + " style = 'width: 100%'>"
+                +   "<div class = container>"
+                +     "<div class = 'image-overlay'>"
+                +        "<div class = 'image-title'><center>" + getPlushieNameAndInv()+ "</center></div>"
+                +         "</div>"
+                +       "<img src =" + "\'"+ getImage(plushieNameAndInv) + "\'" + "class = 'image'" +" style = 'width: 100%'>"
+                +  "</div>"
                 +  "</div>";
     
     return lastRow;
@@ -191,8 +205,16 @@ public class viewinventory extends HttpServlet{
        
         //css styling
         writer.println("<style>");
-        writer.println(".column{ width: 33.33%; padding: 5px;}"); 
+        //styles the row of images
+        writer.println(".column{ width: 33.33%; padding: 10px;}"); 
         writer.println(".row::after {display: flex;}");
+        //hover effect
+        writer.println(".container{position:relative;}");
+        writer.println(".container:hover .image-overlay{opacity: 1;}");
+        writer.println(".image{ display: block; width: 100%; height: auto;}");
+        writer.println(".image-overlay{position: absolute; top:0; buttom:0;  left:0; right:0; height:100%; opacity: 0; width:100%; transition:.5s ease; background-color: #008CBA;}");
+        writer.println(".image-title{ color: black; font-size: 20px; position: absolute; top: 50%; left:50%; transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%);}");
+        //general styling
         writer.println("h2{ color: blue;}");
         writer.println("body, html{ margin-left: 2%; margin-right: 2%, margin-botton: 2%; margin-top: 1%}");
         writer.println("</style>");
@@ -209,10 +231,11 @@ public class viewinventory extends HttpServlet{
         writer.println("<html><p>The plushies with the most amount in the inventory are: </p></html>");
         String[][] top3plushies = top3Plushies();
         for (int i = 0; i < top3plushies.length; i++){
+            writer.println("<html>" + (i + 1) + ". " + "</html>");
             for (int j = 0; j < top3plushies[0].length; j++){
                 writer.println("<html>" + top3plushies[i][j] +"</html>" );
             }
-            writer.println();
+            writer.println("<html><p></p></html>");
         }
         writer.println("<html><p><hr></p></html>");
         //creates button
