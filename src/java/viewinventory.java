@@ -211,12 +211,12 @@ public class viewinventory extends HttpServlet{
         //hover effect
         writer.println(".container{position:relative;}");
         writer.println(".container:hover .image-overlay{opacity: 1;}");
-        writer.println(".image{ display: block; width: 100%; height: auto;}");
-        writer.println(".image-overlay{position: absolute; top:0; buttom:0;  left:0; right:0; height:100%; opacity: 0; width:100%; transition:.5s ease; background-color: #008CBA;}");
+        writer.println(".image{ display: block; width: 100%; height: auto; border: 3px solid black}");
+        writer.println(".image-overlay{position: absolute; top:0; buttom:0;  left:0; right:0; height:100%; opacity: 0; width:100%; transition:.5s ease; background-color: rgb(254 205 211);}");
         writer.println(".image-title{ color: black; font-size: 20px; position: absolute; top: 50%; left:50%; transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%);}");
         //general styling
-        writer.println("h2{ color: blue;}");
-        writer.println("body, html{ margin-left: 2%; margin-right: 2%, margin-botton: 2%; margin-top: 1%}");
+        writer.println("h2{ color: rgb(159 18 57);}");
+        writer.println("body, html{ margin-left: 2%; margin-right: 2%, margin-botton: 2%; margin-top: 1%; background-color: rgb(254 252 232);}");
         writer.println("</style>");
         
         
