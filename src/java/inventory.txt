@@ -1,39 +1,55 @@
 cheerleader hello kitty
-2
+3
+zebra hello kitty
+1
+pink valentine hello kitty
+1
+green valentine hello kitty
+1
 pink hello kitty
 1
 pink seal
-1
+2
 pink seal with skirt
 1
 white seal
-1
+2
 white seal dressed as bee
-1
+3
 seal dressed as frog
+2
+seal dressed as bunny
 1
 seal dressed as duck
 1
 brown bear with blue strap
 1
+white bear with blue strap
+2
 white bear dressed as bee
 2
 brown bear dressed as bee
 2
 brown bear dressed as panda
 1
+white bear dressed as panda
+1
 duck dressed as panda
 1
 brown bear dressed as otter
+2
+white bear dressed as otter
 1
 polar bear
+3
+katsu
 2
 tempura shrimp
 1
 tempura nigiri
-1
+2
 dinosaur nigiri
-1
+2
 katsu and tempura in box
 1
 cat with flower
@@ -47,20 +63,30 @@ huskey
 panda
 6
 brown pug dog
-1
+2
 white dog
-1
+2
 brown dog with blue scarf
 1
 white cat
 2
 grey cat
-1
+3
 yellow cat
-1
+2
 brown cat
+2
+ladybug
+3
+hippo
 1
-blue cat
+piglet
+2
+walrus
+1
+blue cat with scarf
+1
+yellow cat chef
 1
 pineapple 
 1
@@ -70,6 +96,12 @@ strawberry
 1
 lucky cat
 3
+afro dog
+1
+orange dog
+2
+blue cat
+1
 grey dog with scarf
 1
 pink llama
@@ -81,6 +113,8 @@ blue llama
 hedgehog
 1
 yellow dog
-1
+3
 sloth
+1
+grey seal pillow
 1

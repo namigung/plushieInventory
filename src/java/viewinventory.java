@@ -23,7 +23,7 @@ public class viewinventory extends HttpServlet{
     
     //file instance
     final File inventory = new File ("/Users/naomigong/NetBeansProjects/plushieInventory/src/java/inventory.txt");
-    Map<String, String> plushies = new LinkedHashMap<String,String>();
+    LinkedHashMap<String, String> plushies = new LinkedHashMap<String,String>();
     
     
     //counts the total line numbers in the file 
@@ -228,6 +228,7 @@ public class viewinventory extends HttpServlet{
         int totalTypePlushies = countLineNum(inventory)/2;
         writer.println("<html><p>"+ "The total number of types of  plushies is " + totalTypePlushies+ "</p></html>");
         //prints top 3 plushies
+        
         writer.println("<html><p>The plushies with the most amount in the inventory are: </p></html>");
         String[][] top3plushies = top3Plushies();
         for (int i = 0; i < top3plushies.length; i++){
@@ -237,6 +238,7 @@ public class viewinventory extends HttpServlet{
             }
             writer.println("<html><p></p></html>");
         }
+        
         writer.println("<html><p><hr></p></html>");
         //creates button
         String htmlRespone = "<html><a href ='index.html'><button>go back</button></a></html>";
@@ -251,7 +253,7 @@ public class viewinventory extends HttpServlet{
             tempTotalTypePlushies -= 3;
             writer.println(printRow());
             //for last row
-            if (i == row){
+            if (i == row && tempTotalTypePlushies != 0){
             String lastRow = lastRowString();
                writer.println(
              "<html>"
@@ -265,7 +267,6 @@ public class viewinventory extends HttpServlet{
        
         //resets the iterator for when you run application again
         fileIterator = 1; 
-   
     }
       
 }  
